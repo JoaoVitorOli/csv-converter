@@ -54,14 +54,14 @@ function csv2json(csv) {
   return result;
 }
 
-function json2csv(array) {
-  if (array.length === 0) {
+function json2csv(objArray) {
+  if (objArray.length === 0) {
     return "Empty or invalid input";
   }
-  const array = typeof array !== 'object' ? JSON.parse(array) : array;
-  let str = `${Object.keys(array[0]).map(value => `${value}`).join(",")}` + '\r\n';
+  const array = typeof objArray !== 'object' ? JSON.parse(objArray) : objArray;
+  let str = `${Object.keys(objArray[0]).map(value => `${value}`).join(",")}` + '\r\n';
 
-  return array.reduce((str, next) => {
+  return objArray.reduce((str, next) => {
       str += `${Object.values(next).map(value => `${value}`).join(",")}` + '\r\n';
       return str;
      }, str);
