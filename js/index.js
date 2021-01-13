@@ -58,10 +58,11 @@ function json2csv(objArray) {
   if (objArray.length === 0) {
     return "Empty or invalid input";
   }
+  
   const array = typeof objArray !== 'object' ? JSON.parse(objArray) : objArray;
-  let str = `${Object.keys(objArray[0]).map(value => `${value}`).join(",")}` + '\r\n';
+  let str = `${Object.keys(array[0]).map(value => `${value}`).join(",")}` + '\r\n';
 
-  return objArray.reduce((str, next) => {
+  return array.reduce((str, next) => {
       str += `${Object.values(next).map(value => `${value}`).join(",")}` + '\r\n';
       return str;
      }, str);
